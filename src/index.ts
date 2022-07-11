@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable guard-for-in */
 /* eslint-disable no-console */
 
 const str: string = 'hi'; // string
@@ -30,6 +32,7 @@ function notuse(): void { // 반환값 설정 금지
 
 // 이 함수는 절대 함수의 끝까지 실행되지 않는다는 의미
 const neverEnd = (): never => {
+  // eslint-disable-next-line no-constant-condition
   while (true) {
     console.log('hello');
   }
@@ -38,10 +41,11 @@ const neverEnd = (): never => {
 const sum = (a: number, b: number): number => a + b;
 
 // JS의 특성을 살리고 싶다면 들어오지 않아도 되는 매개변수에 ?를 붙인다.
-const sum2 = (a: number, b?: number): number => a + b;
+// const sum2 = (a: number, b?: number): number => a + b;
 
 const restSum = (a: number, ...nums: number[]): number => {
   let totalOfNums = 0;
+  // eslint-disable-next-line no-restricted-syntax
   for (const key in nums) {
     totalOfNums += nums[key];
   }
@@ -112,7 +116,7 @@ class myBeer2 implements CraftBeer2 {
     this.beerName = b;
   }
 
-  constructor() {}
+  // constructor() {}
 }
 
 // 클래스와 마찬가지로 인터페이스도 인터페이스 간 확장이 가능합니다.
@@ -125,6 +129,47 @@ interface Developer extends Person {
 const fe = {} as Developer;
 fe.name = 'josh';
 fe.skill = 'TypeScript';
+
+// 유니온 타입이란 자바스크립트의 OR 연산자(||)와 같이 A이거나 B이다 라는 의미의 타입입니다.
+function logText(text: string | number) {
+  console.log(text);
+}
+
+// 유니온 타입을 사용하는 경우
+function getAge(age: number | string) {
+  if (typeof age === 'number') {
+    age.toFixed(); // 정상 동작, age의 타입이 `number`로 추론되기 때문에 숫자 관련된 API를 쉽게 자동완성 할 수 있다.
+    return age;
+  }
+  if (typeof age === 'string') {
+    return age;
+  }
+  return new TypeError('age must be number or string');
+}
+/**
+ * 유니온 타입을 사용할 경우 코딩을 하게되면 오류를 막기 위해 두 자료형의 교집합부분만 사용가능하다.
+ * 즉, 예제처럼 String | number를 하게되면 실제로 사용할 수 있는 부분은 toString()같은 메서드밖에 없다.
+ */
+
+interface man {
+  name: string;
+  age: number;
+}
+interface woman {
+  name: string;
+  skill: number;
+}
+// 인터섹션 타입은 여러 타입을 모두 만족하는 하나의 타입을 의미합니다.
+type peple = man & woman;
+
+/** 결과적으로 peple의 타입은 다음과 같습니다.
+ * {
+ *    name: string;
+ *    age: number;
+ *    skill: string;
+ * }
+ * 이처럼 & 연산자를 이용해 여러 개의 타입 정의를 하나로 합치는 방식을 인터섹션 타입 정의 방식이라고 합니다.
+ */
 
 console.log(str);
 console.log(num);
@@ -143,7 +188,7 @@ console.log(unuseful);
 console.log(notuse);
 console.log(neverEnd);
 console.log(sum);
-console.log(sum2);
+// console.log(sum2);
 console.log(restSum);
 console.log(arr4);
 console.log(loginUser);
