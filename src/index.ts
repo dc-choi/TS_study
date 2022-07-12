@@ -2,6 +2,7 @@
 /* eslint-disable guard-for-in */
 /* eslint-disable no-console */
 
+// eslint-disable-next-line max-classes-per-file
 const str: string = 'hi'; // string
 
 const num: number = 10; // number
@@ -170,6 +171,59 @@ type peple = man & woman;
  * }
  * 이처럼 & 연산자를 이용해 여러 개의 타입 정의를 하나로 합치는 방식을 인터섹션 타입 정의 방식이라고 합니다.
  */
+
+
+// 타입스크립트는 객체의 특정 속성의 접근과 할당에 대해 제어할 수 있습니다. 이를 위해선 해당 객체가 클래스로 생성한 객체여야 합니다. 아래의 간단한 예제를 봅시다.
+class Dev {
+  private __devName: string;
+
+  get devName(): string {
+    // eslint-disable-next-line no-underscore-dangle
+    return this.__devName;
+  }
+
+  set devName(value: string) {
+    if (value && value.length > 5) {
+      throw new Error('이름이 너무 깁니다');
+    }
+    // eslint-disable-next-line no-underscore-dangle
+    this.__devName = value;
+  }
+}
+// get만 선언하고 set을 선언하지 않는 경우에는 자동으로 readonly로 인식됩니다.
+
+const josh = new Dev();
+josh.devName = 'Josh Bolton'; // Error
+josh.devName = 'Josh';
+
+// 추상 클래스는 특정 클래스의 상속 대상이 되는 클래스이며 좀 더 상위 레벨에서 속성, 메서드의 모양을 정의합니다.
+abstract class Developer {
+  abstract coding(): void; // 'abstract'가 붙으면 상속 받은 클래스에서 무조건 구현해야 함
+
+  // eslint-disable-next-line class-methods-use-this
+  drink(): void {
+    console.log('drink sth');
+  }
+}
+
+class FrontEndDeveloper extends Developer {
+  // eslint-disable-next-line class-methods-use-this
+  coding(): void {
+    // Developer 클래스를 상속 받은 클래스에서 무조건 정의해야 하는 메서드
+    console.log('develop web');
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  design(): void {
+    console.log('design web');
+  }
+}
+
+// const dev = new Developer(); // error: cannot create an instance of an abstract class
+const josh2 = new FrontEndDeveloper();
+josh2.coding(); // develop web
+josh2.drink(); // drink sth
+josh2.design(); // design web
 
 console.log(str);
 console.log(num);
