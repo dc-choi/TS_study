@@ -1,6 +1,7 @@
-import Over from "./overloding";
+import Overloading from "./overloding";
 
-const over = new Over();
+const over = new Overloading();
 
 over.test();
-over.testStr("hi");
+over.test("hello wolrd");
+over.test("hello wolrd", 5);
