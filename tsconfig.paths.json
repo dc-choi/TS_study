@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist", // 컴파일된 파일이 저장될 디렉토리
+        "rootDir": "./", // 컴파일할 파일이 있는 디렉토리
+        "baseUrl": ".", // 경로를 사용할 때 기준이 되는 디렉토리
+        "paths": { // baseUrl을 기준으로 경로를 설정할 수 있다.
+            "@*": ["./src/*"] // @로 시작하는 경로는 src/로 시작하는 경로로 변환된다.
+        }
+    },
+    "ts-node": { // ts-node 설정 (개발시 경로 문제를 해결)
+        "require": ["tsconfig-paths/register"]
+    },
+    "exclude": ["node_modules", "test/**/*.{spec, test}.ts"], // 컴파일시 제외할 디렉토리, 파일
+    "include": ["./src/**/*.tsx", "./src/**/*.ts"], // 컴파일시 포함할 디렉토리, 파일
+}

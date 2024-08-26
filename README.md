@@ -1,11 +1,17 @@
 # TS_study
 
-## learn Type
+## 캡틴 판교 TS 웹사이트 학습.
 
-## learn function
+#### learn Type
 
-## learn Interface
+#### learn function
 
-## learn Union Type AND Intersection Type
+#### learn Interface
 
-## learn Class
+#### learn Union Type AND Intersection Type
+
+#### learn Class
+
+## 타입스크립트의 모든 것 수강
+
+#### tsconfig.json
