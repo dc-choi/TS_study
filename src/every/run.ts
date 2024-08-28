@@ -6,6 +6,6 @@
 // import "./type/generic";
 // import "./type/util";
 // import "./type/class";
-import "./type/decorator";
+// import "./type/decorator";
 
 // logger("Hello, World!");
