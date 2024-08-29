@@ -4,6 +4,14 @@ import { Person } from "./encapsulation/person";
 import { Student } from "./inherritance/student";
 import { Animal, Cat, Dog } from "./polymorphism/poly";
 
+/**
+ * 객체 지향 4대 특징
+ * 1. 추상화 > interface
+ * 2. 캡슐화 > private, getter, setter
+ * 3. 상속 > extends, abstract
+ * 4. 다형성 > extends, override
+ */
+
 const cal: ICal = new Cal();
 console.log(cal.add(1, 2));
 console.log(cal.sub(1, 2));

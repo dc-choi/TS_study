@@ -4,9 +4,9 @@
     * 따라서 rimraf를 통해 먼저 기존에 컴파일된 파일을 삭제하고 컴파일을 진행한다.
     */
     "compilerOptions": {
-        "target": "ES6", // 컴파일된 파일의 ECMAScript 버전
+        "target": "ESNext", // 컴파일된 파일의 ECMAScript 버전
         "module": "commonjs",
-        "lib": ["DOM", "ES6", "ES2017", "ESNext.AsyncIterable"], // 컴파일된 파일에서 사용할 라이브러리
+        "lib": ["DOM", "ESNext"], // 컴파일된 파일에서 사용할 라이브러리
         "sourceMap": true,
         "moduleResolution": "node",
         "removeComments": true, // 컴파일된 파일에서 주석을 제거할지 여부
