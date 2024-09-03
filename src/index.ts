@@ -1,1 +1,1 @@
-import "./every/oop/run";
+import "./every/run";

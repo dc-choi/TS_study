@@ -80,7 +80,7 @@ function logAge(param: personAge) {
     console.log(param.age);
 }
 const person = { name: "Capt", age: 28 };
-logAge(person);
+logAge(person2);
 
 interface CraftBeer {
     name: string;
